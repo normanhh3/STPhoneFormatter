@@ -22,6 +22,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // If I add this line here, and then try to backspace (delete or attempt to remove the phone number) in the phone field to clear it out, that is when I get the exception
+    _phoneTextField.text = @"(111) 222-3333";
+    
+    // If however I add the following line, it works as expected
+    [[STPhoneFormatter phoneFormatter] setPhoneNumber:_phoneTextField.text];
 }
 
 - (void)viewWillAppear:(BOOL)animated
